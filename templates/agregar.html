@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Usuario</title>
+</head>
+<body>
+<h1>Agregar Usuario</h1>
+<form method="POST">
+    {{forma.csrf_token}}
+    <P>
+        {{forma.usuario.label}}<br/>
+        {{forma.usuario(size=30)}}
+    </P>
+    <P>
+        {{forma.contrasenia.label}}<br/>
+        {{forma.contrasenia(size=30)}}
+    </P>
+    <P>
+        {{forma.email.label}}<br/>
+        {{forma.email(size=30)}}
+    </P>
+    <P>
+        {{forma.departamento.label}}<br/>
+        {{forma.departamento(size=30)}}
+    </P>
+    <P>
+        {{forma.enviar()}}
+    </P>
+</form>
+</body>
+</html>
