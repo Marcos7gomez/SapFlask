@@ -3,30 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Agregar Usuario</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles2.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
-<h1>Agregar Usuario</h1>
+<body style="background-color:#ccc;">
+  <div class="login-box" >
+  <div class="login-header">Agregar Usuario</div>
+  <div class="login-body">
+
+
 <form method="POST">
     {{forma.csrf_token}}
     <P>
         {{forma.usuario.label}}<br/>
-        {{forma.usuario(size=30)}}
+        {{forma.usuario(size=60)}}
     </P>
     <P>
         {{forma.contrasenia.label}}<br/>
-        {{forma.contrasenia(size=30)}}
+        {{forma.contrasenia(size=60)}}
     </P>
     <P>
         {{forma.email.label}}<br/>
-        {{forma.email(size=30)}}
+        {{forma.email(size=60)}}
     </P>
     <P>
         {{forma.departamento.label}}<br/>
-        {{forma.departamento(size=30)}}
+        {{forma.departamento(size=60)}}
     </P>
     <P>
         {{forma.enviar()}}
+        <a href="{{url_for('login')}}">Ya tengo cuenta</a>
     </P>
 </form>
+</div>
+</div>
 </body>
 </html>

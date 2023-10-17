@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iniciar sesión</title>
+</head>
+<body>
+<h1>Iniciar sesión</h1>
+<form method="POST">
+
+    <p>
+        {{forma.usuario.label}}<br/>
+        {{forma.usuario(size=30)}}
+    </p>
+    <p>
+        {{forma.contrasenia.label}}<br/>
+        {{forma.contrasenia(size=30)}}
+    </p>
+    <p>
+        {{forma.enviar()}}
+    </p>
+</form>
+</body>
+</html>

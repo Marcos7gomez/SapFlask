@@ -9,3 +9,9 @@ class PersonaForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     departamento = StringField('Departamento(Comercial o GTR)', validators=[DataRequired()])
     enviar = SubmitField('Enviar')
+
+
+class UsuarioForm(FlaskForm):
+    usuario = StringField('Usuario', validators=[DataRequired()])
+    contrasenia = StringField('Contraseña', validators=[DataRequired()])
+    enviar = SubmitField('Enviar')
