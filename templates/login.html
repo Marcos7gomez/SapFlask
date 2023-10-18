@@ -27,13 +27,15 @@
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       {{ message }}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">×</span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
     {% endfor %}
     {% endif %}
     {% endwith %}
-      <p>No tengo cuenta <a href="{{ url_for('agregar') }}">Crear usuario</a></p>
+
+       <p style="padding:5px;">
+       <a href="{{ url_for('register') }}" class="btn btn-dark ">No tengo cuenta</a></p>
   </div>
  </div>
  </body>
