@@ -13,7 +13,7 @@
  <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
   <a class="py-2 d-none d-md-inline-block" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Inicio</a>
-  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('inicio') }}"><i class="fas fa-user-circle"></i> Perfil</a>
+  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('perfil') }}"><i class="fas fa-user-circle"></i> Perfil</a>
   <a class="py-2 d-none d-md-inline-block" href="{{ url_for('agregar') }}"><i class="fas fa-sign-out-alt"></i> Salir</a>
    </div>
     </nav>
@@ -24,33 +24,25 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <i class="fas fa-home"></i>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url_for('ver_ticket') }}">
                   <i class="fas fa-shopping-cart"></i>
-                  Orders
+                  Tickets
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-    <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-shopping-cart"></i>
                   Products
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="fas fa-users"></i>
-                  Customers
-                </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <i class="fas fa-download"></i>
-                  Reports
+                    <i class="fas fa-download"></i>
+                  Contáctanos
                 </a>
               </li>
             </ul>
@@ -60,6 +52,8 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <div class="col-12">
+ <body2 style="background-image: url('/IMG/Imagen_global.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+ </body2>
    {% block content %}{% endblock %}
    </div>
           </div>
@@ -67,6 +61,8 @@
 
       </div>
     </div>
+</body>
+<!-- </body>-->
 
- </body>
+
 </html>

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div>Id.ticket: {{ticket.id}}</div>
+<div>Título: {{ticket.titulo}}</div>
+<div>Descripción: {{ticket.descripcion}}</div>
+<div>
+        <form action="/cambiar_estado/{{ ticket.id }}" method="post">
+            <label for="nuevo_estado">Cambiar Estado:</label>
+            <select name="nuevo_estado" id="nuevo_estado">
+                <option value="Pendiente">Pendiente</option>
+                <option value="En Progreso">En Progreso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+            <button type="submit">Cambiar Estado</button>
+        </form>
+    </div>
+<div>Creador: {{ticket.creador}}</div>
+<div>
+    <strong>Comentarios:</strong>
+    <ul>
+    {% for comentario in ticket.comentarios %}
+        <li>{{ comentario.contenido }}</li>
+    {% endfor %}
+    </ul>
+</div>
+<form action="/comentar/{{ ticket.id }}" method="post">
+    <label for="comentario">Comentario:</label>
+    <input type="text" id="comentario" name="comentario" placeholder="Agregar comentario">
+    <button type="submit">Comentar</button>
+</form>
+<br/>
+<a href="{{url_for('ticket')}}">Regresar</a>
+{% endblock %}

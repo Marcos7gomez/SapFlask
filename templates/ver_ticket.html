@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <a href="{{url_for('indexTicket')}}">Añadir Ticket</a>
+<div>
+        <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Creador</th>
+                <th>Fecha de Creación</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.titulo }}</td>
+                    <td>{{ ticket.descripcion }}</td>
+                    <td>{{ ticket.estado }}</td>
+                    <td>{{ ticket.creador }}</td>
+                    <td>{{ ticket.fecha_creacion.strftime('%Y-%m-%d %H:%M') }}</td>
+                   <td><a href="{{ url_for('ver_detalle_Tick', id=ticket.id) }}">Ver</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
