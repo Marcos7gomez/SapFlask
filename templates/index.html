@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sistema de administración de usuarios</title>
-</head>
-<body>
-<h1>Listado de usuarios</h1>
-<div>
+{% extends 'layout.html.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
     Total de usuarios: {{total_personas}}
-</div>
-<div>
-    <a href="/agregar">Agregar Usuario</a>
-</div>
 <div>
     <a href="{{url_for('login')}}">Iniciar sesión</a>
 </div>
 <div>
-    <table border="1">
+    <table border="5">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Usuario</th>
-                <th>Contraseña</th>
                 <th>Email</th>
                 <th>Departamento</th>
                 <th></th>
@@ -33,7 +24,6 @@
                 <tr>
                     <td>{{persona.id}}</td>
                     <td>{{persona.usuario}}</td>
-                    <td>{{persona.contrasenia}}</td>
                     <td>{{persona.email}}</td>
                     <td>{{persona.departamento}}</td>
                     <td><a href="ver/{{persona.id}}">Ver</a></td>
@@ -42,5 +32,4 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
+{% endblock %}

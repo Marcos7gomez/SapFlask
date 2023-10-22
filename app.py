@@ -4,7 +4,7 @@ import psycopg2
 import psycopg2.extras
 from flask import Flask, render_template, request, url_for, flash, session
 from flask_migrate import Migrate
-from datetime import datetime
+# from datetime import datetime
 
 # from werkzeug.security import check_password_hash, generate_password_hash
 # from sqlalchemy.testing.pickleable import User
@@ -70,17 +70,17 @@ def inicio():
 #     return render_template('detalle.html', persona=persona)
 
 
-@app.route('/profile')
+@app.route('/perfil')
 def perfil():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    # Check if user is loggedin
+    # Revisa si el usuario está en sesión
     if 'loggedin' in session:
         cursor.execute('SELECT * FROM persona WHERE id = %s', [session['id']])
         cuenta = cursor.fetchone()
-        # Show the profile page with account info
+        # Muestra la información del usuario
         return render_template('detalle.html', persona=cuenta)
-    # User is not loggedin redirect to login page
+    # Si el usuario no está en sesión lo manda a logearse
     return redirect(url_for('login'))
 
 
@@ -132,10 +132,10 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    # Check if "username", "password" and "email" POST requests exist (user submitted form)
+    # Verifica si "usuario", "contrasenia" y "email" POST existen (lo enviado por el usuario)
     if request.method == 'POST' and 'usuario' in request.form and 'contrasenia' in request.form and 'email' \
             in request.form:
-        # Create variables for easy access
+        # Formulario para el registro
         usuario = request.form['usuario']
         departamento = request.form['departamento']
         contrasenia = request.form['contrasenia']
@@ -143,7 +143,7 @@ def register():
 
         _hashed_password = generate_password_hash(contrasenia)
 
-        # Check if account exists using MySQL
+        #Verifica que la cuenta exista en la tabla
         cursor.execute('SELECT * FROM persona WHERE usuario = %s', (usuario,))
         cuenta = cursor.fetchone()
         print(cuenta)
@@ -157,16 +157,29 @@ def register():
         elif not contrasenia or not contrasenia or not email:
             flash('¡Por favor rellena el formulario!')
         else:
-            # Account doesnt exists and the form data is valid, now insert new account into users table
+            # SI la cuenta no existe y la informacion del formulario es correcta, ingresa un nuevo usuario en la
+            # tabla usuario
             cursor.execute("INSERT INTO persona (usuario, departamento, contrasenia, email) VALUES (%s,%s,%s,%s)",
                            (usuario, departamento, _hashed_password, email))
             conn.commit()
-            flash('You have successfully registered!')
+            flash('Usted se registró con éxito!')
+            return redirect(url_for('login'))
     elif request.method == 'POST':
-        # Form is empty... (no POST data)
-        flash('Please fill out the form!')
+        # Si el formulario está vacío
+        flash('Por favor complete el formulario!')
     # Show registration form with message (if any)
     return render_template('register.html')
+
+
+@app.route('/logout')
+def logout():
+    # Elimina la información de la sesión
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('usuario', None)
+
+    # Redirecciona a la página de login
+    return redirect(url_for('login'))
 
 
 # Parte de fran
@@ -238,7 +251,7 @@ def ver_ticket():
     return render_template('ver_ticket.html', tickets=tickets)
 
 
-@app.route('/ver_tickets')
+@app.route('/ticket')
 def ticket():
     # Listado de tickets
     tickets = Tickets.query.all()

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color:#ccc;">
  <head>
   <meta charset="utf-8">
   <title>Crear cuenta</title>
-  <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -11,10 +11,10 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
  </head>
  <body style="background-color:#ccc;">
- <div class="container">
-   <div class="row main">
-    <div class="main-login main-center">
-    <h5>Registre un nuevo usuario</h5>
+ 
+      <div class="login-box">
+        <div class="login-header">Registrar nuevo usuario</div>
+        <div class="login-body">
      <form action="{{ url_for('register') }}" method="post" autocomplete="off">
       <div class="form-group">
        <label for="usuario" class="cols-sm-2 control-label">Usuario</label>
@@ -30,7 +30,7 @@
        <div class="cols-sm-10">
         <div class="input-group">
          <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-         <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+         <input type="text" class="form-control" name="email" id="email"  placeholder="Ingresa tu email"/>
         </div>
        </div>
       </div>
@@ -68,7 +68,7 @@
         {% endfor %}
         {% endif %}
         {% endwith %}
-       <input type="submit" value="Register" class="form-control btn btn-primary " name="">
+       <input type="submit" value="Registrar" class="form-control btn btn-primary " name="Registrar">
        <p style="padding:5px;">
        <a href="{{ url_for('login') }}" class="btn btn-dark ">Tengo una cuenta</a></p>
 

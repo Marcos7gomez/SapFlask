@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Crear un nuevo ticket</h1>
+    <h3>Crear nuevo ticket</h3>
     <form action="/Tickets" method="post">
         <label for="titulo">Título:</label><br>
         <input type="text" id="titulo" name="titulo"><br>
@@ -11,7 +11,7 @@
         <textarea id="descripcion" name="descripcion"></textarea><br>
         <label for="creador">Creador:</label><br>
         <input type="text" id="creador" name="creador"><br><br>
-        <input type="submit" value="Crear Ticket">
+        <input type="submit" value="Crear Ticket" class="btn btn-dark">
     </form>
-    <a href="{{ url_for('ver_ticket') }}"><button>Ver Tickets</button></a>
+<!--    <a href="{{ url_for('ver_ticket') }}"><button>Ver Tickets</button></a>-->
 {% endblock %}

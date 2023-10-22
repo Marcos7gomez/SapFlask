@@ -3,66 +3,36 @@
  <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles2.css">
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Agrega este enlace a Font Awesome en el encabezado de tu HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
  </head>
  <body class="loggedin">
  <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Inicio</a>
-  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('perfil') }}"><i class="fas fa-user-circle"></i> Perfil</a>
-  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('agregar') }}"><i class="fas fa-sign-out-alt"></i> Salir</a>
-   </div>
+  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('home') }}"><i class="fas fa-home icono-ticket"></i> Inicio</a>
+  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('perfil') }}"><i class="fas fa-user-circle icono-ticket"></i> Perfil</a>
+  <a class="py-2 d-none d-md-inline-block" href="{{ url_for('ticket') }}"><i class="fas fa-ticket icono-ticket"></i>Tickets</a><a class="py-2 d-none d-md-inline-block" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt icono-ticket"></i> Salir</a>
+
+      </div>
     </nav>
 
- <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('ver_ticket') }}">
-                  <i class="fas fa-shopping-cart"></i>
-                  Tickets
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-        <i class="fas fa-shopping-cart"></i>
-                  Products
-                </a>
-              </li>
-              <li class="nav-item">
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-download"></i>
-                  Contáctanos
-                </a>
-              </li>
-            </ul>
-   </div>
-        </nav>
+
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <div class="col-12">
- <body2 style="background-image: url('/IMG/Imagen_global.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
- </body2>
    {% block content %}{% endblock %}
    </div>
           </div>
    </main>
 
-      </div>
-    </div>
 </body>
-<!-- </body>-->
+
 
 
 </html>
