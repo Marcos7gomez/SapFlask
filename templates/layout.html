@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color:#e3e1e1;">
  <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
@@ -11,7 +11,8 @@
 <!-- Agrega este enlace a Font Awesome en el encabezado de tu HTML -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
  </head>
- <body class="loggedin">
+ <body class="loggedin" style="background-color:#e3e1e1;">
+
  <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
   <a class="py-2 d-none d-md-inline-block" href="{{ url_for('home') }}"><i class="fas fa-home icono-ticket"></i> Inicio</a>
@@ -19,6 +20,9 @@
   <a class="py-2 d-none d-md-inline-block" href="{{ url_for('ticket') }}"><i class="fas fa-ticket icono-ticket"></i>Tickets</a><a class="py-2 d-none d-md-inline-block" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt icono-ticket"></i> Salir</a>
 
       </div>
+     <div class="logo">
+    <img src="{{ url_for('static', filename='images/LogoGlobal.png') }}" alt="Logo de la empresa">
+</div>
     </nav>
 
 

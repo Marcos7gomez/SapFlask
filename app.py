@@ -208,9 +208,13 @@ def indexTicket():
     if request.method == 'POST':
         titulo = request.form['titulo']
         descripcion = request.form['descripcion']
-        creador = request.form['creador']
+        if 'usuario' in session:
+            creador = session['usuario']
+        else:
+            # Puedes manejar el caso en el que el usuario no está autenticado de otra manera
+            creador = 'Usuario no autenticado'
         # Crear un nuevo Ticket y guardarlo en la base de datos
-        nuevo_ticket = Tickets(titulo=titulo, descripcion=descripcion, estado="Pendiente", creador=creador)
+        nuevo_ticket = Tickets(titulo=titulo, descripcion=descripcion, estado="Pendiente", creador=session['usuario'])
         db.session.add(nuevo_ticket)
         db.session.commit()
 

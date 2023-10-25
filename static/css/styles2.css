@@ -1,6 +1,6 @@
 
 body {
-    background-color: #e1e6ec;
+    background-color: #a7b1bf;
     margin: 0;
   }
 
@@ -33,7 +33,7 @@ font-size: 35px;
 background: linear-gradient(to bottom, #00bfff 0%, #5b6d7c 100%);
 color:#fff;
 position: relative;
-box-shadow: 1px 3px 14px  rgba(252, 243, 243, 0.5);
+box-shadow: 1px 3px 14px  rgb(255, 255, 255);
 }
 .login-body
 {
@@ -42,7 +42,7 @@ line-height: 2;
 }
 .msg {
 color: #e3dcdd;
-background-color: #f8d7da;
+background-color: #eee3e4;
 border-color: #ebe4e5;
 padding: .75rem 1.25rem;
 margin-bottom: 1rem;
@@ -79,7 +79,7 @@ padding-top: 3px;
 }
 
 .main-login{
-background-color: #fff;
+background-color: #f1ecec;
 /* shadows and rounded borders */
 -moz-border-radius: 2px;
 -webkit-border-radius: 2px;
@@ -108,7 +108,7 @@ tr:nth-child(even) {
 background-color: #f2f2f2;
 }
 tr:hover {
-background-color: #e0e0e0;
+background-color: #f0ebeb;
 }
 .material-symbols-outlined {
   font-variation-settings:
@@ -123,7 +123,7 @@ height: auto!important;
 padding: 8px 12px !important;
 }
 .input-group {
--webkit-box-shadow: 0px 2px 5px 0px rgb(250, 244, 244)!important;
+-webkit-box-shadow: 0px 2px 5px 0px rgb(218, 206, 206)!important;
 -moz-box-shadow: 0px 2px 5px 0px rgb(255, 255, 255)!important;
 box-shadow: 0px 2px 5px 0px rgb(249, 247, 247)!important;
 }
@@ -136,12 +136,22 @@ background:#5b6d7c;
 color: #ebe5e5;
 text-shadow: none;
 -webkit-box-shadow: 0px 3px 5px 0px rgb(241, 236, 236);
--moz-box-shadow: 0px 3px 5px 0px rgba(246, 239, 239, 0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(243, 239, 239, 0.764);
 box-shadow: 0px 3px 5px 0px rgba(228, 217, 217, 0.31);
 
 }
+.pendiente-color{
+  background-color: rgb(206, 12, 12);
+  
+}
+.en.progreso-color{
+  background-color: rgb(193, 193, 66);
+}
+.finalizado-color{
+  background-color: rgb(12, 144, 12);
+}
 span.input-group-addon i {
-color: #fff;
+color: #f3ecec;
 font-size: 17px;padding:10px;
 }
 
@@ -155,10 +165,25 @@ text-align: center;
 }
 
 .site-header {
-background-color: rgba(235, 230, 230, 0.85);
+background-color: rgba(20, 20, 20, 0.85);
 -webkit-backdrop-filter: saturate(180%) blur(20px);
 backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
 color:#fff;
+}
+/* Estilos para tickets finalizados */
+.finalizados {
+    background-color: rgb(222, 222, 231); /* Fondo azul */
+    color: rgb(0, 0, 0); /* Texto en blanco */
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.logo img {
+  width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  height: auto;
 }
