@@ -18,11 +18,13 @@
         </form>
     </div>
 <div>Creador: {{ticket.creador}}</div>
-<div>
+<div class="comment">
     <strong>Comentarios:</strong>
     <ul>
     {% for comentario in ticket.comentarios %}
-        <li>{{comentario.creador}}-- {{ comentario.contenido }} </li>
+        <li>
+            <span class="creador">{{comentario.creador}} comentó:</span> {{ comentario.contenido }}
+        </li>
     {% endfor %}
     </ul>
 </div>
