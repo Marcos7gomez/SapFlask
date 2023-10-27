@@ -193,7 +193,7 @@ class Ticket:
         self.creador = creador
 
     def cambiar_estado(self, nuevo_estado):
-        estados_validos = ["Pendiente", "En Progreso", "Finalizado"]
+        estados_validos = ["Pendiente", "En Proceso", "Finalizado"]
         if nuevo_estado in estados_validos:
             self.estado = nuevo_estado
         else:
@@ -205,6 +205,7 @@ class Ticket:
 
 @app.route('/Tickets', methods=['GET', 'POST'])
 def indexTicket():
+    global creador
     if request.method == 'POST':
         titulo = request.form['titulo']
         descripcion = request.form['descripcion']
@@ -228,11 +229,12 @@ def comentar(ticket_id):
     ticket = Tickets.query.get(ticket_id)
 
     if ticket:
-        nuevo_comentario = Comentario(contenido=comentario, ticket=ticket)
-        db.session.add(nuevo_comentario)
-        db.session.commit()
+            nuevo_comentario = Comentario(contenido=comentario, ticket=ticket, creador=session['usuario'])
+            nuevo_comentario.asignar_creador()
+            db.session.add(nuevo_comentario)
+            db.session.commit()
 
-    return redirect(url_for('ver_detalleTick', id=ticket_id))
+    return redirect(url_for('ver_detalle_Tick', id=ticket_id, creador=ticket.creador))
 
 
 @app.route('/cambiar_estado/<int:ticket_id>', methods=['POST'])

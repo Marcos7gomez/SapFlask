@@ -11,7 +11,7 @@
             <label for="nuevo_estado">Cambiar Estado:</label>
             <select name="nuevo_estado" id="nuevo_estado">
                 <option value="Pendiente">Pendiente</option>
-                <option value="En Progreso">En Progreso</option>
+                <option value="En Proceso">En Proceso</option>
                 <option value="Finalizado">Finalizado</option>
             </select>
             <button type="submit">Cambiar Estado</button>
@@ -22,7 +22,7 @@
     <strong>Comentarios:</strong>
     <ul>
     {% for comentario in ticket.comentarios %}
-        <li>{{ comentario.contenido }}</li>
+        <li>{{comentario.creador}}-- {{ comentario.contenido }} </li>
     {% endfor %}
     </ul>
 </div>
@@ -33,4 +33,5 @@
 </form>
 <br/>
 <a href="{{url_for('ticket')}}">Regresar</a>
+
 {% endblock %}

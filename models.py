@@ -1,6 +1,9 @@
 from datetime import datetime
 
+from flask import session
+
 from app import db
+
 
 
 class Persona(db.Model):
@@ -28,7 +31,7 @@ class Tickets(db.Model):
     descripcion = db.Column(db.String(255), nullable=False)
     estado = db.Column(db.String(20), nullable=False)
     fecha_creacion = db.Column(db.DateTime, default=datetime.utcnow)
-    creador = db.Column(db.String(100), nullable=False)
+    creador = db.Column(db.String(100), nullable=True)
     comentarios = db.relationship('Comentario', backref='ticket', lazy=True)
 
     def __str__(self):
@@ -42,13 +45,23 @@ class Tickets(db.Model):
             f'Comentarios: {self.comentarios},'
         )
 
-    def agregar_comentario(self, contenido):
-        nuevo_comentario = Comentario(contenido=contenido, ticket_id=self.id)
+    def agregar_comentario(self, contenido, creador=None):
+        nuevo_comentario = Comentario(contenido=contenido, ticket_id=self.id, creador=['usuario'])
         db.session.add(nuevo_comentario)
         db.session.commit()
 
 
 class Comentario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    contenido = db.Column(db.String(255), nullable=False)
+    contenido = db.Column(db.String(255), nullable=True)
     ticket_id = db.Column(db.Integer, db.ForeignKey('tickets.id'), nullable=False)
+    creador = db.Column(db.String(255), nullable=True)
+
+    def asignar_creador(self):
+        if 'usuario' in session:
+            self.creador = session['usuario']
+
+    def agregar_comentario(self, contenido, creador):
+        nuevo_comentario = Comentario(contenido=contenido, ticket_id=self.id, creador=None)
+        db.session.add(nuevo_comentario)
+        db.session.commit()

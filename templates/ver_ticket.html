@@ -45,7 +45,7 @@
         </thead>
         <tbody>
             {% for ticket in tickets %}
-            {% if ticket.estado in ['Pendiente', 'En Progreso'] %}
+            {% if ticket.estado in ['Pendiente', 'En Proceso'] %}
                 <tr>
                     <td>{{ ticket.id }}</td>
                     <td>{{ ticket.titulo }}</td>
